@@ -7,7 +7,7 @@
 #$ -q all.q,bigmem.q
 
 
-# Matthew Bashton 2012-2016
+#2017
 # Converts aligned BAM to gziped FASTQ using BAM file passed in at command-line.
 # Uses SAMtools to randomly order reads in aligned BAM file, to avoid mapping
 # bias as discussed here:

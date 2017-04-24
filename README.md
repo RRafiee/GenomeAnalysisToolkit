@@ -34,6 +34,6 @@ Compress the FastQ file to reduce its size using the gzip utility:
 gzip interleaved_reads.fq
 
 This creates a gzipped FastQ file called interleaved_reads.fq.gz. This file is ready to be used as input for the Best Practices workflow. BWA handles gzipped fastq files natively, so you don’t need to unzip the file to use it later on.
---------------------------------------------------------------
+
 
 

@@ -42,7 +42,6 @@ This creates a gzipped FastQ file called interleaved_reads.fq.gz. This file is r
 # What is paired-end read in DNA sequencing?
 
 FASTQ is a text file format (human readable) that provides 4 lines of data per sequence.
-
 Sequence identifier
 The sequence
 Comments

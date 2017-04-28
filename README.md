@@ -48,5 +48,7 @@ The sequence
 Comments
 Quality scores
 FASTQ format is commonly used to store sequencing reads, in particular from Illumina and Ion Torrent platforms.
-Paired-end reads may be stored either in one FASTQ file (alternating) or in two different FASTQ files. Paired-end reads may have sequence identifiers ended by "/1" and "/2" respectively. You could check the orientation of a FASTQ file by 'cat' command line in linux: cat filename | more  (use CTRL+z to stop) 
+Paired-end reads may be stored either in one FASTQ file (alternating) or in two different FASTQ files. Paired-end reads may have sequence identifiers ended by "/1" and "/2" respectively. 
+You could check the orientation of a FASTQ file by 'cat' command line in linux.
+$ cat filename | more  (use CTRL+z to stop) 
 

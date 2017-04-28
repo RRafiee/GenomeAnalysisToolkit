@@ -21,7 +21,6 @@ This creates a new BAM file containing the original reads, which still retain th
 
 Revert the BAM file to FastQ format by running the following HTSlib command:
 htscmd bam2fq -a shuffled_reads.bam > interleaved_reads.fq 
-
 This creates an interleaved FastQ file called interleaved_reads.fq containing the now-unmapped paired reads.
 Interleaved simply means that for each pair of reads in your paired-end data set, both the forward and the reverse reads are in the same file, as opposed to having them in separate files.
 

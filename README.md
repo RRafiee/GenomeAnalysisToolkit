@@ -1,4 +1,21 @@
 # Genome Analysis Toolkit Key Points
+
+===============================================================================
+# What is paired-end read in DNA sequencing?
+
+Illumina paired-end sequencing is based on the idea that you have initial DNA fragments (longer than your actual read length) and you sequence both its ends. On the Illumina chip, both ends of each sequence are amplified prior to actual sequencing using bridging. This approach results in two reads per fragment, with the first read in forward orientation and the second read in reverse-complement orientation. Depending on the inital fragment size and read length, these fragment can either overlap or not. In Single-end reads, the sequence fragment are sequenced from one direction only.
+
+FASTQ is a text file format (human readable) that provides 4 lines of data per sequence:
+Sequence identifier,
+The sequence,
+Comments,
+Quality scores.
+
+FASTQ format is commonly used to store sequencing reads, in particular from Illumina and Ion Torrent platforms.
+Paired-end reads may be stored either in one FASTQ file (alternating) or in two different FASTQ files. Paired-end reads may have sequence identifiers ended by "/1" and "/2" respectively. 
+You can check the orientation of a FASTQ file by 'cat' command line in linux.
+$ cat filename | more  (use CTRL+z to stop) 
+
 ===============================================================================
 # How to revert a BAM file back to FastQ?
 
@@ -34,20 +51,4 @@ gzip interleaved_reads.fq
 This creates a gzipped FastQ file called interleaved_reads.fq.gz. This file is ready to be used as input for the Best Practices workflow. BWA handles gzipped fastq files natively, so you don’t need to unzip the file to use it later on.
 
 
-===============================================================================
-
-# What is paired-end read in DNA sequencing?
-
-Illumina paired-end sequencing is based on the idea that you have initial DNA fragments (longer than your actual read length) and you sequence both its ends. On the Illumina chip, both ends of each sequence are amplified prior to actual sequencing using bridging. This approach results in two reads per fragment, with the first read in forward orientation and the second read in reverse-complement orientation. Depending on the inital fragment size and read length, these fragment can either overlap or not. In Single-end reads, the sequence fragment are sequenced from one direction only.
-
-FASTQ is a text file format (human readable) that provides 4 lines of data per sequence:
-Sequence identifier,
-The sequence,
-Comments,
-Quality scores.
-
-FASTQ format is commonly used to store sequencing reads, in particular from Illumina and Ion Torrent platforms.
-Paired-end reads may be stored either in one FASTQ file (alternating) or in two different FASTQ files. Paired-end reads may have sequence identifiers ended by "/1" and "/2" respectively. 
-You can check the orientation of a FASTQ file by 'cat' command line in linux.
-$ cat filename | more  (use CTRL+z to stop) 
 

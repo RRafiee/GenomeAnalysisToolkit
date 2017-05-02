@@ -26,7 +26,7 @@ for (i in 1:length(temp))
   C1 <- i
   C2 <- paste("@RG\\tID:TP",i,"\\tLB:",N1,"\\tSM:MBRep",N2,"\\tPL:ILLUMINA",sep="")
   C3 <- paste("../FASTQ/",temp[i],sep="")
-  df <- data.frame(C1,C2,C3,C3)  # this is a case in which a fastq file includes forwared and reverse read pairs together in a sampe file (i.e., interleaved fastq)
+  df <- data.frame(C1,C2,C3,C3)  # this is a case in which a fastq file includes forwared and reverse read pairs together in a same file (i.e., interleaved fastq)
   write.table(df, file = "master_list.txt", 
               append = TRUE, sep = "\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
  }

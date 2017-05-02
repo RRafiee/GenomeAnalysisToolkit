@@ -15,12 +15,12 @@ for (i in 1:length(temp))
  {
   #print(temp[i])
   #i <- 3
-  pos11 <- regexpr('EGA', temp[i]) #regexpr('TARGET_EXOME', temp[i])
-  pos12 <- regexpr('MBRep', temp[i]) #regexpr('targetExtract', temp[i])
+  pos11 <- regexpr('EGA', temp[i]) 
+  pos12 <- regexpr('MBRep', temp[i]) 
   N1 <- substr(temp[i], pos11[1], pos12[1]-1)
   
-  pos13 <- regexpr('MBRep', temp[i]) #regexpr('targetExtract', temp[i])
-  pos14 <- regexpr('merged', temp[i]) #regexpr('targetExtract', temp[i])
+  pos13 <- regexpr('MBRep', temp[i]) 
+  pos14 <- regexpr('merged', temp[i]) 
   N2 <- substr(temp[i], pos13[1]+5, pos14[1]-1) #you can get like this: _TXX_""#
   #print(N1)
   C1 <- i

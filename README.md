@@ -53,5 +53,6 @@ This creates a gzipped FastQ file called interleaved_reads.fq.gz. This file is r
 ===============================================================================
 # How to run BWA on an interleaved Fastq file?
 
-When you have an interleaved fastq which covers both forward and reverse sequence read, use -p flag 
+When you have an interleaved fastq which covers both forward and reverse sequence reads, use -p flag
+
 usr/bin/time --verbose $BWA mem -p -t 5 -M -v 2 -R  $RG $REF $TMPDIR/$B_NAME_F1 > $TMPDIR/$G_NAME.$SGE_TASK_ID.sam

@@ -50,5 +50,7 @@ gzip interleaved_reads.fq
 
 This creates a gzipped FastQ file called interleaved_reads.fq.gz. This file is ready to be used as input for the Best Practices workflow. BWA handles gzipped fastq files natively, so you don’t need to unzip the file to use it later on.
 
+===============================================================================
+# How to run BWA on an interleaved Fastq file?
 
-
+usr/bin/time --verbose $BWA mem -p -t 5 -M -v 2 -R  $RG $REF $TMPDIR/$B_NAME_F1 > $TMPDIR/$G_NAME.$SGE_TASK_ID.sam

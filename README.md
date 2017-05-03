@@ -54,5 +54,6 @@ This creates a gzipped FastQ file called interleaved_reads.fq.gz. This file is r
 # How to run BWA on an interleaved Fastq file?
 
 When you have an interleaved fastq (including forward and reverse sequence reads), use -p flag in BWA (check the correponding command line in BWA.sh file). 
+http://bio-bwa.sourceforge.net/bwa.shtml
 
 

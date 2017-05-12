@@ -98,3 +98,75 @@ for (i in 1:No_of_sample)
 ##################################################################################################
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##################################################################################################
+# Start
+#"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# Dr Reza Rafiee, 2017
+# Research Associate, Northern Institute for Cancer Research, Newcastle University
+# This script generates a txt file (Mutect pairs list) which we need when running somatic calls in GATK
+
+setwd("~/ICGC/TargetExomeInputFiles/Fastq")
+
+temp = list.files(path= getwd(), pattern="*.gz")
+
+# read master_list.txt from the corresponding folder
+
+Df_master_list_txt <- data.frame(read.table("master_list.txt",header=F, sep="\t") )
+
+for (i in 1:nrow(Df_master_list_txt))
+ {
+  pos11 <- regexpr('tSM', as.character(Df_master_list_txt$V2[i]))
+  pos12 <- regexpr('tPL', as.character(Df_master_list_txt$V2[i])) #regexpr('targetExtract', temp[i])
+  N1 <- substr(as.character(Df_master_list_txt$V2[i]), pos11[1]+4, pos12[1]-2)
+  Df_master_list_txt$V1[i] <- N1
+ }
+
+Df_master_list_txt$V2 <- Df_master_list_txt$V1 
+Df_master_list_txt$V1 <- rownames(Df_master_list_txt)
+Df_master_list_txt$V3 <- ""
+Df_master_list_txt <- Df_master_list_txt[,-4]
+
+
+Df_master_list_txt$V2 <- sort(Df_master_list_txt$V2, decreasing = FALSE)
+
+df_MuTect_pairs <- data.frame(matrix(nrow=nrow(Df_master_list_txt)/2,ncol = 3,0))
+
+numberofpairs <- nrow(Df_master_list_txt)/2
+k <- 1
+while (k <= numberofpairs)
+{
+  l <- (2*k)/2
+  df_MuTect_pairs$X1[l] <- (2*k)/2
+  df_MuTect_pairs$X2[l] <- Df_master_list_txt$V2[2*k-1]
+  df_MuTect_pairs$X3[l] <- Df_master_list_txt$V2[2*k]
+  k <- k + 1
+}
+
+write.table(df_MuTect_pairs, file = "MuTect_pairs.txt", 
+            append = TRUE, sep = "\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
+
+# Remove (or replace) everything before or after a specified character in R strings
+# > x <- 'aabb.ccdd'
+# > sub('.*', '', x)
+# [1] ""
+# > sub('bb.*', '', x)
+# [1] "aa"
+# > sub('.*bb', '', x)
+# [1] ".ccdd"
+# > sub('\\..*', '', x)
+# [1] "aabb"
+# > sub('.*\\.', '', x)
+# [1] "ccdd"
+
+# Output:
+
+# 1	MBRep_T10control	MBRep_T10tumor
+# 2	MBRep_T11control	MBRep_T11tumor
+# 3	MBRep_T12control	MBRep_T12tumor
+# 4 ...
+# ...
+
+#"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+# End
+##################################################################################################
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

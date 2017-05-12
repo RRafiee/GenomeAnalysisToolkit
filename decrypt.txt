@@ -1,0 +1,15 @@
+decrypt.sh
+
+#!/bin/bash -e
+for FILE in *.sra; do
+    B_NAME=`basename $FILE .sra`
+    echo "* Decrypting $FILE saving to a pair of FASTQ files"
+    /home/bashton/sratoolkit.2.5.7-ubuntu64/bin/fastq-dump --origfmt --split-files $FILE
+    rm $FILE
+    FASTQ1='_1'
+    FASTQ2='_2'
+    randomise.sh $B_NAME$FASTQ1.fastq $B_NAME$FASTQ2.fastq
+    rm $B_NAME$FASTQ1.fastq
+    rm $B_NAME$FASTQ2.fastq
+    echo "* Done SRA file $FILE"
+done

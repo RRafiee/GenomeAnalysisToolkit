@@ -1,0 +1,11 @@
+randomise.sh
+
+#!/bin/bash -e
+B_NAME1=`basename $1 .fastq`
+B_NAME2=`basename $2 .fastq`
+echo -n "* Randomising and compressing with gzip..."
+paste <(cat $1) <(cat $2) | paste - - - - | shuf | awk -F'\t' '{OFS="\n"; print $1,$3,$5,$7 | "gzip > tmp1.gz"; print $2,$4,$6,$
+8 | "gzip > tmp2.gz"}'
+mv tmp1.gz $B_NAME1.fastq.gz
+mv tmp2.gz $B_NAME2.fastq.gz
+echo " done!”
